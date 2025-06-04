@@ -64,6 +64,7 @@ import { Sale } from './stock-movement/sale.entity';
 import { StockAdjustment } from './stock-movement/stock-adjustment.entity';
 import { StockMovement } from './stock-movement/stock-movement.entity';
 import { Surcharge } from './surcharge/surcharge.entity';
+import { BankTransferVerification } from './bank-transfer-verification/bank-transfer-verification.entity';
 import { Tag } from './tag/tag.entity';
 import { TaxCategory } from './tax-category/tax-category.entity';
 import { TaxRate } from './tax-rate/tax-rate.entity';
@@ -139,6 +140,7 @@ export const coreEntitiesMap = {
     StockLocation,
     StockMovement,
     Surcharge,
+    BankTransferVerification,
     Tag,
     TaxCategory,
     TaxRate,

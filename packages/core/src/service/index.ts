@@ -43,6 +43,7 @@ export * from './services/order-testing.service';
 export * from './services/order.service';
 export * from './services/payment-method.service';
 export * from './services/payment.service';
+export * from './services/bank-transfer.service';
 export * from './services/product-option-group.service';
 export * from './services/product-option.service';
 export * from './services/product-variant.service';

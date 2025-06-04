@@ -101,6 +101,8 @@ type Mutation {
     setOrderShippingMethod(shippingMethodId: [ID!]!): SetOrderShippingMethodResult!
     "Add a Payment to the Order"
     addPaymentToOrder(input: PaymentInput!): AddPaymentToOrderResult!
+    "Upload proof of bank transfer payment"
+    uploadBankTransferProof(orderId: ID!, proof: String!): BankTransferVerification!
     "Set the Customer for the Order. Required only if the Customer is not currently logged in"
     setCustomerForOrder(input: CreateCustomerInput!): SetCustomerForOrderResult!
     """

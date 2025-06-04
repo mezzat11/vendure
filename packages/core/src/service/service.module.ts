@@ -50,6 +50,7 @@ import { OrderTestingService } from './services/order-testing.service';
 import { OrderService } from './services/order.service';
 import { PaymentMethodService } from './services/payment-method.service';
 import { PaymentService } from './services/payment.service';
+import { BankTransferService } from './services/bank-transfer.service';
 import { ProductOptionGroupService } from './services/product-option-group.service';
 import { ProductOptionService } from './services/product-option.service';
 import { ProductVariantService } from './services/product-variant.service';
@@ -86,6 +87,7 @@ const services = [
     OrderService,
     OrderTestingService,
     PaymentService,
+    BankTransferService,
     PaymentMethodService,
     ProductOptionGroupService,
     ProductOptionService,

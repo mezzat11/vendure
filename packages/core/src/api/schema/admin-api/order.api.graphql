@@ -38,6 +38,8 @@ type Mutation {
     Payment.
     """
     addManualPaymentToOrder(input: ManualPaymentInput!): AddManualPaymentToOrderResult!
+    "Verify or reject a bank transfer"
+    verifyBankTransfer(orderId: ID!, verified: Boolean!): BankTransferVerification!
     "Creates a draft Order"
     createDraftOrder: Order!
     "Deletes a draft Order"

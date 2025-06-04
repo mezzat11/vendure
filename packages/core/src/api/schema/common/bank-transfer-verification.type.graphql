@@ -1,0 +1,8 @@
+type BankTransferVerification implements Node {
+    id: ID!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    uploadedProofUrl: String
+    verified: Boolean!
+    expiresAt: DateTime!
+}

@@ -8,7 +8,7 @@ import {
 } from '@vendure/common/lib/generated-types';
 import { DeepPartial, ID } from '@vendure/common/lib/shared-types';
 import { summate } from '@vendure/common/lib/shared-utils';
-import { Column, Entity, Index, JoinTable, ManyToMany, ManyToOne, OneToMany } from 'typeorm';
+import { Column, Entity, Index, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne } from 'typeorm';
 
 import { Calculated } from '../../common/calculated-decorator';
 import { InternalServerError } from '../../common/error/errors';
@@ -28,6 +28,7 @@ import { Payment } from '../payment/payment.entity';
 import { Promotion } from '../promotion/promotion.entity';
 import { ShippingLine } from '../shipping-line/shipping-line.entity';
 import { Surcharge } from '../surcharge/surcharge.entity';
+import { BankTransferVerification } from '../bank-transfer-verification/bank-transfer-verification.entity';
 
 /**
  * @description
@@ -152,6 +153,9 @@ export class Order extends VendureEntity implements ChannelAware, HasCustomField
 
     @OneToMany(type => OrderModification, modification => modification.order)
     modifications: OrderModification[];
+
+    @OneToOne(() => BankTransferVerification, verification => verification.order)
+    bankTransferVerification?: BankTransferVerification;
 
     /**
      * @description
