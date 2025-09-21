@@ -20,7 +20,8 @@
         "lint": "eslint --fix .",
         "ci": "npm run build",
         "dev-server:mollie": "npm run build && DB=sqlite node -r ts-node/register e2e/mollie-dev-server.ts",
-        "dev-server:stripe": "npm run build && DB=sqlite node -r ts-node/register e2e/stripe-dev-server.ts"
+        "dev-server:stripe": "npm run build && DB=sqlite node -r ts-node/register e2e/stripe-dev-server.ts",
+        "dev-server:tamara": "npm run build && DB=sqlite node -r ts-node/register e2e/tamara-dev-server.ts"
     },
     "homepage": "https://www.vendure.io/",
     "funding": "https://github.com/sponsors/michaelbromley",
@@ -30,7 +31,8 @@
     "peerDependencies": {
         "@mollie/api-client": "3.x",
         "braintree": "3.x",
-        "stripe": "13.x"
+        "stripe": "13.x",
+        "tamara-sdk": "1.x"
     },
     "dependencies": {
         "currency.js": "2.0.4"
@@ -43,6 +45,9 @@
             "optional": true
         },
         "stripe": {
+            "optional": true
+        },
+        "tamara-sdk": {
             "optional": true
         }
     },
@@ -58,6 +63,7 @@
         "nock": "^13.1.4",
         "rimraf": "^5.0.5",
         "stripe": "^13.3.0",
+        "tamara-sdk": "^1.0.7",
         "typescript": "5.8.2"
     }
 }
