@@ -39,6 +39,7 @@ import { ACTIVE_ORDER_INPUT_FIELD_NAME, ConfigService, LogLevel } from '../../..
 import { Country } from '../../../entity';
 import { Order } from '../../../entity/order/order.entity';
 import { ActiveOrderService, CountryService } from '../../../service';
+import { BankTransferService } from '../../../service';
 import { OrderState } from '../../../service/helpers/order-state-machine/order-state';
 import { CustomerService } from '../../../service/services/customer.service';
 import { OrderService } from '../../../service/services/order.service';
@@ -60,6 +61,7 @@ export class ShopOrderResolver {
         private countryService: CountryService,
         private activeOrderService: ActiveOrderService,
         private configService: ConfigService,
+        private bankTransferService: BankTransferService,
     ) {}
 
     @Query()
@@ -488,6 +490,17 @@ export class ShopOrderResolver {
             }
         }
         return new NoActiveOrderError();
+    }
+
+    @Transaction()
+    @Mutation()
+    @Allow(Permission.Owner)
+    async uploadBankTransferProof(
+        @Ctx() ctx: RequestContext,
+        @Args('orderId') orderId: ID,
+        @Args('proof') proof: string,
+    ) {
+        return this.orderService.bankTransferService.uploadProof(ctx, orderId, proof);
     }
 
     @Transaction()

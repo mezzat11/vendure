@@ -60,6 +60,7 @@ export * from './stock-movement/sale.entity';
 export * from './stock-movement/stock-adjustment.entity';
 export * from './stock-movement/stock-movement.entity';
 export * from './surcharge/surcharge.entity';
+export * from './bank-transfer-verification/bank-transfer-verification.entity';
 export * from './tag/tag.entity';
 export * from './tax-category/tax-category.entity';
 export * from './tax-rate/tax-rate.entity';

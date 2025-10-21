@@ -63,6 +63,7 @@ type Order implements Node {
     A summary of the taxes being applied to this Order
     """
     taxSummary: [OrderTaxSummary!]!
+    bankTransferVerification: BankTransferVerification
     history(options: HistoryEntryListOptions): HistoryEntryList!
 }
 

@@ -38,6 +38,7 @@ import { FulfillmentState } from '../../../service/helpers/fulfillment-state-mac
 import { OrderState } from '../../../service/helpers/order-state-machine/order-state';
 import { PaymentState } from '../../../service/helpers/payment-state-machine/payment-state';
 import { OrderService } from '../../../service/services/order.service';
+import { BankTransferService } from '../../../service';
 import { RequestContext } from '../../common/request-context';
 import { Allow } from '../../decorators/allow.decorator';
 import { RelationPaths, Relations } from '../../decorators/relations.decorator';
@@ -49,6 +50,7 @@ export class OrderResolver {
     constructor(
         private orderService: OrderService,
         private connection: TransactionalConnection,
+        private bankTransferService: BankTransferService,
     ) {}
 
     @Query()
@@ -218,5 +220,16 @@ export class OrderResolver {
         @Args() args: MutationAddManualPaymentToOrderArgs,
     ) {
         return this.orderService.addManualPaymentToOrder(ctx, args.input);
+    }
+
+    @Transaction()
+    @Mutation()
+    @Allow(Permission.UpdateOrder)
+    async verifyBankTransfer(
+        @Ctx() ctx: RequestContext,
+        @Args('orderId') orderId: ID,
+        @Args('verified') verified: boolean,
+    ) {
+        return this.bankTransferService.verify(ctx, orderId, verified);
     }
 }
